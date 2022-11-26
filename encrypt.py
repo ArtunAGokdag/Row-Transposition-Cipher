@@ -1,4 +1,6 @@
 import numpy as np
+from math import ceil
+
 
 message = "This is a message."
 
@@ -11,7 +13,7 @@ def encrypt(message, key, _filler_char='-'):
 	# 1 opt is to find nearst square number
 	# else ex 18 -> 6 and 3
 	c = len(key)
-	r = c
+	r = ceil(len(message) / c)
 	
 	# Initialise Cipher
 	m = np.chararray(r*c) # as list first to assign

@@ -1,7 +1,11 @@
 import numpy as np
 from random import shuffle
+from math import ceil
 import encrypt as e
 import decrypt as d
+
+
+get_key_length = (lambda n: 2**(ceil(n/10)) if n < 100 else ceil(n/10))
 
 def keygen(length):
 	# Populate array with 1 to length
@@ -18,8 +22,9 @@ def keygen(length):
 
 def main():
 
-	message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper erat nibh, in dignissim felis eleifend vel. In sit amet massa quis dui.  "
-	key = keygen(11)
+	message = "Lorem ipsum dolor sit amet, Phasellus ullamcorper erat nibh, in dignissim felis eleifend vel. In sit amet massa quis dui.  "
+	len_key = get_key_length(len(message))
+	key = keygen(len_key)
 	print(key)
 
 	ciphertext = e.encrypt(message, key)
