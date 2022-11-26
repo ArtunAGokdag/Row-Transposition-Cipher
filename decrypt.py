@@ -1,4 +1,5 @@
 import numpy as np
+from math import ceil
 
 
 cipher = np.chararray(4,4)
@@ -8,7 +9,8 @@ def decrypt(ciphertext, key, _filler_char='-'):
 
 	# get array shape
 	c = len(key)
-	r = c
+	r = r = ceil(len(ciphertext) / c)
+
 	cipher = np.chararray(r*c)
 
 	# turn text into array
